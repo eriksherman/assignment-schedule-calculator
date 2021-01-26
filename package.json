@@ -1,0 +1,16 @@
+{
+    "name": "mit-challenge-calculator",
+    "version": "1.0.0",
+    "description": "calculator to judge the time it takes to do an mit class",
+    "main": "index.js",
+    "scripts": {
+        "start": "tsc && node js_files/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Erik Sherman",
+    "license": "ISC",
+    "dependencies": {
+        "@types/readline-sync": "^1.4.3",
+        "readline-sync": "^1.4.10"
+    }
+}

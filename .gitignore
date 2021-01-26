@@ -1,1 +1,4 @@
 js_files
+node_modules
+*.swp
+
