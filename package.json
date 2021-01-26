@@ -10,6 +10,7 @@
     "author": "Erik Sherman",
     "license": "ISC",
     "dependencies": {
+        "@types/node": "^14.14.22",
         "@types/readline-sync": "^1.4.3",
         "readline-sync": "^1.4.10"
     }

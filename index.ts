@@ -81,25 +81,59 @@ const printSchedule = (
     let dayNum: number = 0
     let unassigned: string[] = [...assignments]
     let curAssignment: string = unassigned.shift() || ''
-    console.log('day ' + dayNum + ': ' + curAssignment)
+    process.stdout.write('day ' + dayNum + ': ' + curAssignment)
     netWeight -= extractWeightFromAssignment(curAssignment, weights)
-    while (unassigned.length != 0) {
+    while (unassigned.length > 0) {
         if (netWeight == 0) {
             dayNum++
             netWeight += 2
             curAssignment = unassigned.shift() || ''
-            console.log('day ' + dayNum + ': ' + curAssignment)
-            netWeight -= extractWeightFromAssignment(curAssignment, weights)
+            console.log()
+            const assignmentWeight = extractWeightFromAssignment(
+                curAssignment,
+                weights
+            )
+            netWeight -= assignmentWeight
+            process.stdout.write('day ' + dayNum + ': ' + curAssignment)
+            if (netWeight < 0) {
+                process.stdout.write(
+                    ':' + (assignmentWeight - Math.abs(netWeight))
+                )
+            }
         } else if (netWeight >= 0) {
             curAssignment = unassigned.shift() || ''
-            console.log('day ' + dayNum + ': ' + curAssignment)
-            netWeight -= extractWeightFromAssignment(curAssignment, weights)
+            process.stdout.write(', ' + curAssignment)
+            const assignmentWeight = extractWeightFromAssignment(
+                curAssignment,
+                weights
+            )
+            netWeight -= assignmentWeight
+            if (netWeight < 0) {
+                process.stdout.write(
+                    ':' + (assignmentWeight - Math.abs(netWeight))
+                )
+            }
         } else if (netWeight < 0) {
             dayNum++
+            console.log()
+            const assignmentWeight = extractWeightFromAssignment(
+                curAssignment,
+                weights
+            )
+            process.stdout.write(
+                'day ' +
+                    dayNum +
+                    ': ' +
+                    curAssignment +
+                    ':' +
+                    (Math.abs(netWeight) > weightPerDay
+                        ? weightPerDay
+                        : Math.abs(netWeight))
+            )
             netWeight += 2
-            console.log('day ' + dayNum + ': ' + curAssignment)
         }
     }
+    console.log()
 }
 
-printSchedule(assignments, { lecture: 1, pset: 4, exam: 2 }, 2)
+printSchedule(assignments, { lecture: 1.5, pset: 6, exam: 2 }, 2)
