@@ -86,7 +86,7 @@ const printSchedule = (
     while (unassigned.length > 0) {
         if (netWeight == 0) {
             dayNum++
-            netWeight += 2
+            netWeight += weightPerDay
             curAssignment = unassigned.shift() || ''
             console.log()
             const assignmentWeight = extractWeightFromAssignment(
@@ -130,10 +130,10 @@ const printSchedule = (
                         ? weightPerDay
                         : Math.abs(netWeight))
             )
-            netWeight += 2
+            netWeight += weightPerDay
         }
     }
     console.log()
 }
 
-printSchedule(assignments, { lecture: 1.5, pset: 6, exam: 2 }, 2)
+printSchedule(assignments, { lecture: 1, pset: 4, exam: 2 }, 2)
