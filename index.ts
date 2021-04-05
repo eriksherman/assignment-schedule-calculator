@@ -78,7 +78,7 @@ const printSchedule = (
     // extract each assignment type
     // reference weight of assignment
     let netWeight: number = weightPerDay
-    let dayNum: number = 0
+    let dayNum: number = 1
     let unassigned: string[] = [...assignments]
     let curAssignment: string = unassigned.shift() || ''
     process.stdout.write('day ' + dayNum + ': ' + curAssignment)
@@ -136,4 +136,4 @@ const printSchedule = (
     console.log()
 }
 
-printSchedule(assignments, { lecture: 1, pset: 4, exam: 2 }, 2)
+printSchedule(assignments, { lecture: 1, pset: 4, exam: 2 }, 1)
